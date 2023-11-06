@@ -160,3 +160,4 @@ cython_debug/
 .idea/
 
 ./data/video/split_images/
+./data/video/
