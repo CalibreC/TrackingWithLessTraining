@@ -5,7 +5,7 @@ import cv2
 from tqdm import tqdm
 
 
-def split_video(path: Path, cnt_max=900):
+def split_video(path: Path, cnt_max=1800):
     video_path = str(path / "test.mp4")
     split_images_path = str(path / "split_images")
 
@@ -21,10 +21,9 @@ def split_video(path: Path, cnt_max=900):
 
     for i in tqdm(range(cnt_max)):
         ret, frame = video_capture.read()
-        cv2.imwrite(split_images_path + f"/{i + 1}.jpg", frame)
-
         if not ret:
             raise Exception("Video is too short!")
+        cv2.imwrite(split_images_path + f"/{i + 1}.jpg", frame)
 
     video_capture.release()
 
